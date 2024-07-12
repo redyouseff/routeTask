@@ -7,12 +7,13 @@ import { Link } from 'react-router-dom';
 export default function SingleCustomer() {
     const { id } = useParams();
     console.log(id)
+    console.log("Jjjj")
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/customers')
+        fetch('https://redyouseff.github.io/jsonServer/db.json')
             .then((res) => res.json())
-            .then((data) => setCustomers(data));
+            .then((data) => setCustomers(data[0]));
     }, []);
 
     return (
