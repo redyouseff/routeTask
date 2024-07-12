@@ -13,7 +13,7 @@ export default function SingleCustomer() {
     useEffect(() => {
         fetch('https://redyouseff.github.io/jsonServer/db.json')
             .then((res) => res.json())
-            .then((data) => setCustomers(data[0]));
+            .then((data) => setCustomers(data.customers));
     }, []);
 
     return (

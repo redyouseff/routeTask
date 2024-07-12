@@ -23,9 +23,9 @@ const TransactionGraph = ({ customerId }) => {
     const [trans, setTrans] = useState([]);
 
     useEffect(() => {
-         fetch('http://localhost:8000/transactions')
+         fetch('https://redyouseff.github.io/jsonServer/db.json')
             .then((res) => res.json())
-            .then((data) => setTrans(data));
+            .then((data) => setTrans(data.transactions));
     }, []);
 
     const customerTransactions = trans.filter((tran) => tran.customer_id == customerId);
