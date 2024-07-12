@@ -9,17 +9,19 @@ export default function Home() {
     const [trans, setTrans] = useState([]);
     const [search, setSearch] = useState("");
 
+   
+
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = () => {
-        fetch('http://localhost:8000/customers')
+        fetch('https://redyouseff.github.io/jsonServer/db.json')
             .then((res) => res.json())
-            .then((data) => setCustomers(data));
-        fetch('http://localhost:8000/transactions')
+            .then((data) => setCustomers(data.customers));
+        fetch('https://redyouseff.github.io/jsonServer/db.json')
             .then((res) => res.json())
-            .then((data) => setTrans(data));
+            .then((data) => setTrans(data.transactions));
     };
 
     const onSearchChange = (e) => {
@@ -34,10 +36,10 @@ export default function Home() {
             fetchData();
             return;
         }
-        fetch('http://localhost:8000/transactions')
+        fetch('https://redyouseff.github.io/jsonServer/db.json')
             .then((res) => res.json())
             .then((data) => {
-                const filteredData = data.filter((item) => {
+                const filteredData = data.transactions.filter((item) => {
                     const customer = customers.find(c => c.id == item.customer_id);
                     return (
                         item.amount == search ||
