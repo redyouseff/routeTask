@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function SingleCustomer() {
     const { id } = useParams();
+    console.log(id)
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
